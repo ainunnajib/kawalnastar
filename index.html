@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KawalNastar — Kawal Selotip Nastar Indonesia 🍪</title>
+    <meta name="description" content="Platform pengawasan independen selotip toples nastar untuk 200+ juta rakyat Indonesia. Transparan. Akuntabel. Renyah.">
+    <meta property="og:title" content="KawalNastar — Kawal Selotip Nastar Indonesia 🍪">
+    <meta property="og:description" content="Platform pengawasan independen selotip toples nastar. Transparan. Akuntabel. Renyah.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍪</text></svg>">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --merah: #E4002B;
+            --putih: #FFFFFF;
+            --emas: #D4A017;
+            --gelap: #1a1a2e;
+            --kuning-nastar: #F5C518;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--gelap);
+            color: var(--putih);
+            overflow-x: hidden;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--gelap) 0%, #16213e 50%, #0f3460 100%);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='30' y='35' font-size='20' text-anchor='middle'%3E🍪%3C/text%3E%3C/svg%3E") repeat;
+            opacity: 0.05;
+        }
+
+        .badge {
+            background: var(--merah);
+            color: var(--putih);
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            position: relative;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(228, 0, 43, 0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(228, 0, 43, 0); }
+        }
+
+        .logo {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        h1 span {
+            color: var(--kuning-nastar);
+        }
+
+        .tagline {
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            position: relative;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--kuning-nastar);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Ticker */
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            background: var(--merah);
+            padding: 0.8rem 0;
+        }
+
+        .ticker {
+            display: flex;
+            animation: scroll 30s linear infinite;
+            white-space: nowrap;
+        }
+
+        .ticker span {
+            padding: 0 3rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* UU Section */
+        .uu-section {
+            background: linear-gradient(135deg, #16213e, #1a1a3e);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .uu-section h2 {
+            color: var(--kuning-nastar);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pasal {
+            background: rgba(255,255,255,0.05);
+            border-left: 4px solid var(--kuning-nastar);
+            padding: 1.2rem 1.5rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .pasal h3 {
+            color: var(--emas);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .pasal p {
+            opacity: 0.85;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* Pelanggaran Grid */
+        .violations-section {
+            margin: 3rem 0;
+        }
+
+        .violations-section h2 {
+            color: var(--kuning-nastar);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .violations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .violation-card {
+            background: linear-gradient(135deg, rgba(228,0,43,0.1), rgba(228,0,43,0.05));
+            border: 1px solid rgba(228,0,43,0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.2s;
+        }
+
+        .violation-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .violation-level {
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .level-ringan { background: #2d6a4f; color: #95d5b2; }
+        .level-sedang { background: #664d00; color: var(--kuning-nastar); }
+        .level-berat { background: #660000; color: #ff6b6b; }
+
+        .violation-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .violation-card p {
+            opacity: 0.75;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Peta Section */
+        .peta-section {
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .peta-section h2 {
+            color: var(--kuning-nastar);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .peta-section .subtitle {
+            opacity: 0.6;
+            margin-bottom: 2rem;
+        }
+
+        .peta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .provinsi-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 1.2rem;
+            text-align: center;
+        }
+
+        .provinsi-card .emoji { font-size: 2rem; }
+        .provinsi-card h4 { margin: 0.5rem 0 0.3rem; font-size: 0.95rem; }
+        .provinsi-card .score {
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+        .score-hijau { color: #40c057; }
+        .score-kuning { color: var(--kuning-nastar); }
+        .score-merah { color: #ff6b6b; }
+        .provinsi-card .detail { font-size: 0.75rem; opacity: 0.6; }
+
+        /* Lapor Form */
+        .lapor-section {
+            background: linear-gradient(135deg, #16213e, #1a1a3e);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .lapor-section h2 {
+            color: var(--merah);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .lapor-section .subtitle {
+            opacity: 0.6;
+            margin-bottom: 2rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .form-grid .full { grid-column: 1 / -1; }
+
+        label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.05);
+            color: var(--putih);
+            font-size: 0.95rem;
+            font-family: inherit;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--kuning-nastar);
+        }
+
+        textarea { resize: vertical; min-height: 80px; }
+
+        .btn-lapor {
+            grid-column: 1 / -1;
+            background: var(--merah);
+            color: var(--putih);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        .btn-lapor:hover {
+            background: #c40025;
+            transform: scale(1.02);
+        }
+
+        /* Popup */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .popup-overlay.show { display: flex; }
+
+        .popup {
+            background: var(--gelap);
+            border: 2px solid var(--kuning-nastar);
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            max-width: 450px;
+            animation: popIn 0.3s ease;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .popup .emoji { font-size: 4rem; margin-bottom: 1rem; }
+        .popup h3 { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--kuning-nastar); }
+        .popup p { opacity: 0.8; line-height: 1.6; margin-bottom: 1rem; }
+        .popup .nomor { font-size: 1.2rem; font-weight: 800; color: var(--merah); margin: 1rem 0; }
+
+        .btn-close {
+            background: var(--kuning-nastar);
+            color: var(--gelap);
+            border: none;
+            padding: 0.7rem 2rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        /* Quote */
+        .quote-section {
+            text-align: center;
+            padding: 3rem 2rem;
+            margin: 2rem 0;
+        }
+
+        .quote-section blockquote {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            font-style: italic;
+            opacity: 0.8;
+            max-width: 700px;
+            margin: 0 auto 1rem;
+            line-height: 1.8;
+        }
+
+        .quote-section cite {
+            color: var(--kuning-nastar);
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            opacity: 0.5;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        footer a { color: var(--kuning-nastar); text-decoration: none; }
+
+        /* JR Section */
+        .jr-banner {
+            background: linear-gradient(135deg, var(--merah), #9b0020);
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .jr-banner h2 { font-size: 1.6rem; margin-bottom: 0.5rem; }
+        .jr-banner p { opacity: 0.9; max-width: 600px; margin: 0 auto; line-height: 1.7; }
+
+        .counter {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .counter-item {
+            background: rgba(0,0,0,0.3);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            min-width: 80px;
+        }
+
+        .counter-item .num {
+            font-size: 2rem;
+            font-weight: 800;
+            display: block;
+        }
+
+        .counter-item .unit {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 600px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .stats-bar { gap: 1rem; }
+            .stat-number { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="badge">🚨 DARURAT NASIONAL</div>
+        <div class="logo">🍪</div>
+        <h1>Kawal<span>Nastar</span></h1>
+        <p class="tagline">Platform Pengawasan Independen Selotip Toples Nastar untuk 200+ Juta Rakyat Indonesia</p>
+        
+        <div class="stats-bar">
+            <div class="stat">
+                <span class="stat-number" id="counter-laporan">847,291</span>
+                <span class="stat-label">Laporan Masuk</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">38</span>
+                <span class="stat-label">Provinsi Terpantau</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number" id="counter-toples">2.4M</span>
+                <span class="stat-label">Toples Diawasi</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">73%</span>
+                <span class="stat-label">Tingkat Pelanggaran</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breaking News Ticker -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <span>🔴 BREAKING: DPR RI masukkan RUU Perselotipan ke Prolegnas 2026</span>
+            <span>⚖️ Judicial Review selotip nastar diajukan ke MK oleh @AzzamIzzulhaq</span>
+            <span>🍪 73% toples nastar di Indonesia melanggar standar selotip nasional</span>
+            <span>📊 Jawa Timur catat pelanggaran selotip tertinggi — kue terlalu enak, toples dibuka paksa</span>
+            <span>🚨 KawalNastar deteksi 12,847 toples tanpa selotip di DKI Jakarta</span>
+            <span>📋 Juknis Perselotipan Nastar resmi diterbitkan Kementerian Perselotipan</span>
+            <span>🔴 BREAKING: DPR RI masukkan RUU Perselotipan ke Prolegnas 2026</span>
+            <span>⚖️ Judicial Review selotip nastar diajukan ke MK oleh @AzzamIzzulhaq</span>
+            <span>🍪 73% toples nastar di Indonesia melanggar standar selotip nasional</span>
+            <span>📊 Jawa Timur catat pelanggaran selotip tertinggi — kue terlalu enak, toples dibuka paksa</span>
+            <span>🚨 KawalNastar deteksi 12,847 toples tanpa selotip di DKI Jakarta</span>
+            <span>📋 Juknis Perselotipan Nastar resmi diterbitkan Kementerian Perselotipan</span>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- JR Banner -->
+        <div class="jr-banner">
+            <h2>⚖️ Judicial Review Sedang Berjalan</h2>
+            <p>Sdr. <strong>Azzam Mujahid Izzulhaq</strong> telah resmi mengajukan Judicial Review ke Mahkamah Konstitusi atas aturan selotip toples nastar yang menyulitkan 200+ juta rakyat Indonesia.</p>
+            <div class="counter" id="countdown">
+                <div class="counter-item"><span class="num" id="cd-days">--</span><span class="unit">Hari</span></div>
+                <div class="counter-item"><span class="num" id="cd-hours">--</span><span class="unit">Jam</span></div>
+                <div class="counter-item"><span class="num" id="cd-mins">--</span><span class="unit">Menit</span></div>
+                <div class="counter-item"><span class="num" id="cd-secs">--</span><span class="unit">Detik</span></div>
+            </div>
+            <p style="margin-top:0.8rem;opacity:0.7;font-size:0.85rem;">⏳ Menunggu sidang perdana di MK...</p>
+        </div>
+
+        <!-- UU Perselotipan -->
+        <div class="uu-section">
+            <h2>📜 RUU Perselotipan Nastar (Draft)</h2>
+            
+            <div class="pasal">
+                <h3>Pasal 1 — Definisi</h3>
+                <p><strong>Selotip Nastar</strong> adalah pita perekat yang digunakan untuk menutup toples berisi kue nastar guna menjamin keutuhan, kesegaran, dan keamanan nastar dari tangan-tangan jahil yang mengambil sebelum hari raya.</p>
+            </div>
+
+            <div class="pasal">
+                <h3>Pasal 2 — Standar Nasional Selotip (SNS)</h3>
+                <p>Setiap toples nastar WAJIB ditutup dengan selotip yang memenuhi kriteria: (a) Lebar minimal 2cm; (b) Daya rekat minimum 48 jam; (c) Mudah dibuka tanpa merusak tutup toples; (d) Tidak meninggalkan bekas lem pada toples; (e) Tidak memerlukan gelar S2 untuk membukanya.</p>
+            </div>
+
+            <div class="pasal">
+                <h3>Pasal 3 — Larangan</h3>
+                <p>Dilarang keras: (a) Menggunakan lakban hitam pada toples nastar; (b) Melilit selotip lebih dari 3 putaran; (c) Menggunakan lem tembak sebagai pengganti selotip; (d) Menyegel toples nastar seolah-olah barang bukti KPK.</p>
+            </div>
+
+            <div class="pasal">
+                <h3>Pasal 4 — Sanksi</h3>
+                <p>Pelanggaran Pasal 3 diancam dengan: (a) Peringatan keras dari seluruh keluarga besar; (b) Tidak mendapat THR; (c) Diwajibkan membuka semua toples nastar se-RT pada Lebaran; (d) Membuat 500 butir nastar sebagai denda sosial.</p>
+            </div>
+
+            <div class="pasal">
+                <h3>Pasal 5 — Pemisahan Kekuasaan Perselotipan</h3>
+                <p>Sesuai masukan <a href="https://x.com/keepour_dien/status/2036656313518989655" style="color:var(--kuning-nastar)">@keepour_dien</a>: Pihak perumus standar selotip, pelaksana teknis perselotipan, dan pengawas WAJIB terpisah. Kontraktor selotip dilarang merangkap sebagai pengawas. Bebas dari mentalitas korup!</p>
+            </div>
+        </div>
+
+        <!-- Pelanggaran -->
+        <section class="violations-section">
+            <h2>🚨 Jenis Pelanggaran Selotip</h2>
+            <div class="violations-grid">
+                <div class="violation-card">
+                    <span class="violation-level level-berat">BERAT</span>
+                    <h3>Tanpa Selotip Sama Sekali</h3>
+                    <p>Toples nastar dibiarkan terbuka. Biasanya pelaku beralasan "biar gampang ngambil." Ini anarki.</p>
+                </div>
+                <div class="violation-card">
+                    <span class="violation-level level-berat">BERAT</span>
+                    <h3>Lakban Hitam Industrial</h3>
+                    <p>Menggunakan lakban proyek pada toples. Nastar tidak bisa diakses tanpa alat potong. Melanggar HAM (Hak Akses Makanan).</p>
+                </div>
+                <div class="violation-card">
+                    <span class="violation-level level-sedang">SEDANG</span>
+                    <h3>Selotip Berlebihan (>3 lapis)</h3>
+                    <p>Melilit toples seperti mumi Mesir kuno. Niat hati menjaga keutuhan, malah bikin trauma membuka toples.</p>
+                </div>
+                <div class="violation-card">
+                    <span class="violation-level level-sedang">SEDANG</span>
+                    <h3>Selotip Tanpa Ujung</h3>
+                    <p>Selotip dipasang tanpa melipat ujungnya. Korban harus memutar toples 360° mencari ujung selotip seperti mencari jodoh.</p>
+                </div>
+                <div class="violation-card">
+                    <span class="violation-level level-ringan">RINGAN</span>
+                    <h3>Selotip Kendor</h3>
+                    <p>Selotip ada tapi daya rekat sudah habis. Berfungsi sebagai hiasan belaka. Nastar tetap terancam.</p>
+                </div>
+                <div class="violation-card">
+                    <span class="violation-level level-ringan">RINGAN</span>
+                    <h3>Mismatch Warna</h3>
+                    <p>Selotip coklat pada toples bening, atau selotip bening pada toples gelap. Tidak melanggar fungsi, tapi melanggar estetika.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Peta Provinsi -->
+        <section class="peta-section">
+            <h2>🗺️ Indeks Kepatuhan Selotip per Provinsi</h2>
+            <p class="subtitle">Skor 0-100 berdasarkan hasil Real Count selotip toples</p>
+            <div class="peta-grid">
+                <div class="provinsi-card">
+                    <div class="emoji">🏙️</div>
+                    <h4>DKI Jakarta</h4>
+                    <div class="score score-merah">32</div>
+                    <div class="detail">Terlalu sibuk, lupa selotip</div>
+                </div>
+                <div class="provinsi-card">
+                    <div class="emoji">🌋</div>
+                    <h4>Jawa Timur</h4>
+                    <div class="score score-merah">28</div>
+                    <div class="detail">Nastar terlalu enak, selotip jebol</div>
+                </div>
+                <div class="provinsi-card">
+                    <div class="emoji">🌴</div>
+                    <h4>Jawa Barat</h4>
+                    <div class="score score-kuning">55</div>
+                    <div class="detail">Lumayan patuh, tapi sering kendor</div>
+                </div>
+                <div class="provinsi-card">
+                    <div class="emoji">🏯</div>
+                    <h4>Jawa Tengah</h4>
+                    <div class="score score-kuning">61</div>
+                    <div class="detail">Tradisi selotip masih kuat</div>
+                </div>
+                <div class="provinsi-card">
+                    <div class="emoji">🏝️</div>
+                    <h4>Bali</h4>
+                    <div class="score score-hijau">82</div>
+                    <div class="detail">Selotip dijaga seperti upacara</div>
+                </div>
+                <div class="provinsi-card">
+                    <div class="emoji">🦅</div>
+                    <h4>Sumatera Barat</h4>
+                    <div class="score score-hijau">78</div>
+                    <div class="detail">Rendang aman, nastar juga aman</div>
+                </div>
+                <div class="provinsi-card">
+                    <div class="emoji">⛏️</div>
+                    <h4>Kalimantan Timur</h4>
+                    <div class="score score-kuning">51</div>
+                    <div class="detail">Sedang transisi ke IKN</div>
+                </div>
+                <div class="provinsi-card">
+                    <div class="emoji">🐉</div>
+                    <h4>Sulawesi Selatan</h4>
+                    <div class="score score-hijau">75</div>
+                    <div class="detail">Selotip tebal, jiwa bugis kuat</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lapor -->
+        <section class="lapor-section">
+            <h2>📢 Laporkan Pelanggaran Selotip!</h2>
+            <p class="subtitle">Bersama kita kawal nastar Indonesia. Satu toples, satu laporan.</p>
+            
+            <form class="form-grid" id="formLapor" onsubmit="return submitLapor(event)">
+                <div>
+                    <label>👤 Nama Pelapor</label>
+                    <input type="text" placeholder="Nama lengkap / samaran" required>
+                </div>
+                <div>
+                    <label>📍 Provinsi</label>
+                    <select required>
+                        <option value="">Pilih Provinsi</option>
+                        <option>DKI Jakarta</option>
+                        <option>Jawa Barat</option>
+                        <option>Jawa Tengah</option>
+                        <option>Jawa Timur</option>
+                        <option>Bali</option>
+                        <option>Sumatera Barat</option>
+                        <option>Kalimantan Timur</option>
+                        <option>Sulawesi Selatan</option>
+                        <option>Lainnya</option>
+                    </select>
+                </div>
+                <div>
+                    <label>🚨 Jenis Pelanggaran</label>
+                    <select required>
+                        <option value="">Pilih Jenis</option>
+                        <option>Tanpa Selotip</option>
+                        <option>Lakban Hitam Industrial</option>
+                        <option>Selotip Berlebihan (>3 lapis)</option>
+                        <option>Selotip Tanpa Ujung</option>
+                        <option>Selotip Kendor</option>
+                        <option>Mismatch Warna</option>
+                        <option>Lem Tembak (Kriminal)</option>
+                    </select>
+                </div>
+                <div>
+                    <label>🍪 Jumlah Toples</label>
+                    <input type="number" min="1" placeholder="Berapa toples?" required>
+                </div>
+                <div class="full">
+                    <label>📝 Kronologi</label>
+                    <textarea placeholder="Ceritakan kejadian pelanggaran selotip yang Anda saksikan..."></textarea>
+                </div>
+                <button type="submit" class="btn-lapor">🚨 LAPORKAN SEKARANG</button>
+            </form>
+        </section>
+
+        <!-- Quote -->
+        <section class="quote-section">
+            <blockquote>"Urusan teknis perselotipan ini mesti jelas antara pihak perumus dan pelaksana teknis versus pengawasnya. Jangan sampai kontraktor merangkap pengawas proyek."</blockquote>
+            <cite>— @keepour_dien, Aktivis Perselotipan</cite>
+        </section>
+
+    </div>
+
+    <!-- Popup -->
+    <div class="popup-overlay" id="popup">
+        <div class="popup">
+            <div class="emoji">✅</div>
+            <h3>Laporan Diterima!</h3>
+            <p>Terima kasih atas partisipasi Anda dalam mengawal selotip nastar Indonesia. Laporan Anda akan diproses oleh Tim Quick Count Selotip Nasional.</p>
+            <div class="nomor">No. Tiket: KN-<span id="tiketNo"></span></div>
+            <p style="font-size:0.85rem;opacity:0.6;">*Harap simpan nomor tiket untuk tracking. JK nanya, kasi ini aja.</p>
+            <button class="btn-close" onclick="document.getElementById('popup').classList.remove('show')">Tutup</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>🍪 KawalNastar &copy; 2026 — Transparan. Akuntabel. Renyah.</p>
+        <p style="margin-top:0.5rem;">Diinisiasi oleh <a href="https://x.com/AzzamIzzulhaq/status/2036656938629603401" target="_blank">@AzzamIzzulhaq</a> · Dibangun oleh <a href="https://x.com/ainunnajib" target="_blank">@ainunnajib</a> & AI-Noon 🤖</p>
+        <p style="margin-top:0.5rem;opacity:0.4;font-size:0.75rem;">Disclaimer: Ini satire. Tapi selotip nastar memang perlu dikawal.</p>
+    </footer>
+
+    <script>
+        // Countdown to "sidang MK" (fictional date: April 1, 2026)
+        function updateCountdown() {
+            const target = new Date('2026-04-01T09:00:00+07:00');
+            const now = new Date();
+            const diff = target - now;
+            
+            if (diff <= 0) {
+                document.getElementById('cd-days').textContent = '🎉';
+                document.getElementById('cd-hours').textContent = '';
+                document.getElementById('cd-mins').textContent = '';
+                document.getElementById('cd-secs').textContent = '';
+                return;
+            }
+
+            const d = Math.floor(diff / 86400000);
+            const h = Math.floor((diff % 86400000) / 3600000);
+            const m = Math.floor((diff % 3600000) / 60000);
+            const s = Math.floor((diff % 60000) / 1000);
+
+            document.getElementById('cd-days').textContent = d;
+            document.getElementById('cd-hours').textContent = h;
+            document.getElementById('cd-mins').textContent = m;
+            document.getElementById('cd-secs').textContent = s;
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Form submit
+        function submitLapor(e) {
+            e.preventDefault();
+            const tiket = Math.floor(100000 + Math.random() * 900000);
+            document.getElementById('tiketNo').textContent = tiket;
+            document.getElementById('popup').classList.add('show');
+            e.target.reset();
+            
+            // Increment counter
+            const el = document.getElementById('counter-laporan');
+            const num = parseInt(el.textContent.replace(/,/g, ''));
+            el.textContent = (num + 1).toLocaleString();
+            return false;
+        }
+
+        // Animate counters on load
+        function animateValue(el, start, end, duration) {
+            const startTime = performance.now();
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const current = Math.floor(start + (end - start) * eased);
+                el.textContent = current.toLocaleString();
+                if (progress < 1) requestAnimationFrame(update);
+            }
+            requestAnimationFrame(update);
+        }
+
+        // Start counter animations
+        window.addEventListener('load', () => {
+            animateValue(document.getElementById('counter-laporan'), 0, 847291, 2000);
+        });
+    </script>
+</body>
+</html>
